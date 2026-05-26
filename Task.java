@@ -1,8 +1,12 @@
 public class Task {
-    private int id;
+    private final int id;
     private String title;
 
     public Task(int id, String title) {
+        if (title == null || title.trim().isEmpty()) {
+            throw new IllegalArgumentException("Title cannot be empty");
+        }
+
         this.id = id;
         this.title = title;
     }
@@ -16,6 +20,10 @@ public class Task {
     }
 
     public void setTitle(String title) {
+        if (title == null || title.trim().isEmpty()) {
+            System.out.println("Title cannot be empty!");
+            return;
+        }
         this.title = title;
     }
 
